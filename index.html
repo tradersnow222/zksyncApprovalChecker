@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zk Sync Approval Checker</title>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.5.1/dist/ethers.min.js"></script>
+  <script src="https://unpkg.com/zksync@latest/dist/zksync.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+        --1inch-bg-01: #2392ec;
+        --1inch__ui-05-07: linear-gradient(270deg, #622ee5 0%, #3c2491 100%);
+        --1inch-text-01: #ffffff;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, rgba(13, 24, 42), rgba(8, 12, 21), rgba(28, 19, 38));
+        color: var(--1inch-text-01);
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 2rem;
+    }
+
+    #controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    button {
+        background-color: #0058f1;
+        border: none;
+        padding: 12px 24px;
+        font-size: 1rem;
+        color: white;
+        cursor: pointer;
+        margin: 0 10px;
+        border-radius: 20px;
+        box-shadow: 0 1px 6px #0000000f, 0 2px 32px #00000029;
+    }
+
+    button:hover {
+        background-color: #0044bd;
+    }
+
+    #results {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .dropdown {
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #000000;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        padding: 12px 16px;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>zk Sync Approval Checker</h1>
+  <div id="controls">
+    <button id="connect-wallet">Connect Wallet</button>
+    <button id="check-approvals">Get token approvals</button>
+    <!-- Display a connect button and the current account -->
+    <button id="enableEthereumButton">Show Address</button>
+    <div class="dropdown">
+      <button>Helpful Links</button>
+      <div class="dropdown-content">
+        <a href="https://help.1inch.io/en/articles/6147312-token-approvals" target="_blank">Learn about approvals</a><br>
+        <a href="https://explorer.zksync.io" target="_blank">zkSync explorer</a><br>
+        <a href="https://era.zksync.io/docs/" target="_blank">zkSync info</a>
+      </div>
+    </div>
+  </div>
+  <div id="results"></div>
+
+  <script src="app.js"></script>
+</body
