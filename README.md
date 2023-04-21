@@ -5,7 +5,7 @@ This practice project is a web3 dApp which allows users to connect their Ethereu
 ## Features
 
 - Connect to MetaMask or other Ethereum wallets
-- Check token approvals on zkSync Era (implementation required)
+- Check token approvals on zkSync Era 
 - Display connected wallet address
 - Helpful links related to zkSync Era and token approvals
 
