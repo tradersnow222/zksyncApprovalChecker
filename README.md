@@ -1,4 +1,4 @@
-# Tradersnow's zkSync Era Approval Checker
+# Matt's zkSync Era Approval Checker 
 
 This practice project is a web3 dApp which allows users to connect their Ethereum wallets, such as MetaMask, and check token approvals on the zkSync Era.
 
