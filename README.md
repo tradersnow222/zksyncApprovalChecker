@@ -1,10 +1,10 @@
 # Matt's zkSync Era Approval Checker 
 
-This practice project is a web3 dApp which allows users to connect their Ethereum wallets, such as MetaMask, and check token approvals on the zkSync Era.
+This practice project is a web3 dApp which allows users to connect their Web3 wallet, such as MetaMask, to check and revoke token approvals on the zkSync Era.
 
 ## Features
 
-- Connect to MetaMask or other Ethereum wallets
+- Connect to MetaMask or other Web3 wallets
 - Check token approvals on zkSync Era 
 - Display connected wallet address
 - Helpful links related to zkSync Era and token approvals

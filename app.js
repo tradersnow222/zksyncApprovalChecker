@@ -16,11 +16,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
   
       if (accounts.length > 0) {
-        // Wallet is connected
         connectWalletButton.innerText = accounts[0].slice(0, 5) + '...' + accounts[0].slice(-5);
         connectWalletButton.dataset.connected = 'true';
       } else {
-        // Wallet is disconnected
         connectWalletButton.innerText = 'Connect Wallet';
         connectWalletButton.dataset.connected = 'false';
       }
@@ -30,7 +28,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       connectWalletButton.innerText = 'Connect Wallet';
       connectWalletButton.dataset.connected = 'false';
   
-      // You can clear any stored data related to the user's wallet here.
       console.log('Disconnected from wallet');
     }
   
@@ -43,25 +40,61 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     }
   
-    connectWalletButton.addEventListener('click', () => {
-      if (connectWalletButton.dataset.connected === 'true') {
-        showDisconnectPopup();
-      } else {
-        connectWallet();
-      }
+    document.getElementById('search-button').addEventListener('click', async () => {
+      const searchInput = document.getElementById('search-input');
+      const userAddress = searchInput.value.trim();
+      const allowances = await getAllowances(userAddress);
+      console.log('Allowances:', allowances.toString());
+      updateAllowancesTable(allowances);
+      import { getUserApprovalHistory } from './zksyncEraApprovals';
+      updateAllowancesTable(allowances);
+
+    document.getElementById('search-button').addEventListener('click', async () => {
+      const searchInput = document.getElementById('search-input');
+      const walletAddress = searchInput.value.trim();
+      if (walletAddress) {
+      try {
+      const approvalHistory = await getUserApprovalHistory(walletAddress);
+      console.log('Approval history:', approvalHistory);
+    } catch (error) {
+      console.error('Error fetching approval history:', error);
+    }
+  }
+});
+
+    });
+    
     });
   
     function checkTokenApprovals() {
-      // Your logic for checking token approvals on zkSync Era goes here
     }
-  
+
     checkApprovalsButton.addEventListener('click', checkTokenApprovals);
   
-    document.getElementById('search-button').addEventListener('click', () => {
+    document.getElementById('search-button').addEventListener('click', () => 
       const searchInput = document.getElementById('search-input');
       const searchText = searchInput.value.trim();
       console.log('Search text:', searchText);
-    });
+      async function connectWallet() 
+        if (accounts.length > 0) {
+          try {
+            const approvalHistory = await getUserApprovalHistory(accounts[0]);
+            console.log('Approval history:', approvalHistory);
+          } catch (error)
+
+  connectWalletButton.addEventListener('click', async () => {
+            if (connectWalletButton.dataset.connected === 'true') {
+              showDisconnectPopup();
+            } else {
+              await connectWallet();
+              const userAddress = connectWalletButton.innerText;
+              const allowances = await getAllowances(userAddress);
+              console.log('Allowances:', allowances.toString());
+              updateAllowancesTable(allowances);
+            }
+          });
+      
+    };
   
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
@@ -94,8 +127,28 @@ document.addEventListener('DOMContentLoaded', async () => {
       dropdown.addEventListener('mouseleave', () => {
         timeout = setTimeout(() => {
           dropdownContent.style.display = 'none';
-        }, 100); // Change this value to adjust the delay (in milliseconds)
+        }, 100); 
       });
     });
-  });
-  
+    const { getAllowances } = require('./zkSyncHelper');
+    function updateAllowancesTable(allowances) {
+      const tableBody = document.querySelector('#allowances-table tbody');
+      tableBody.innerHTML = '';
+    
+      for (const allowance of allowances) {
+        const row = document.createElement('tr');
+    
+        const tokenCell = document.createElement('td');
+        tokenCell.textContent = allowance.token;
+        row.appendChild(tokenCell);
+    
+        const amountCell = document.createElement('td');
+        amountCell.textContent = allowance.amount;
+        row.appendChild(amountCell);
+    
+        tableBody.appendChild(row);
+      }
+    }
+    
+    
+ 
