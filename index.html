@@ -33,7 +33,7 @@
     }
 
     button {
-        background-color: #0058f1;
+        background-color: #1976d2;
         border: none;
         padding: 12px 24px;
         font-size: 1rem;
@@ -75,22 +75,144 @@
         color: white;
         text-decoration: none;
     }
+
+    #search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-top: 60px;
+
+}
+
+#search-input {
+  width: 80%;
+  max-width: 500px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#search-button {
+  background-color: #1976d2;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 20px;
+  box-shadow: 0 1px 6px #0000000f, 0 2px 32px #00000029;
+}
+#search-button:hover {
+  background-color: #1976d2;
+}
+.search-description-text {
+  color: #6b6b6b; 
+}
+.help-center-link {
+  color: #589bde; 
+  text-decoration: none;
+}
+.help-center-link:hover {
+  text-decoration: underline;
+}
+.centered-text {
+    text-align: center;
+}
+.theme-dropdown {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.theme-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #000000;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 12px 16px;
+}
+
+.theme-dropdown:hover .theme-dropdown-content {
+  display: block;
+}
+
+.theme-dropdown-content a {
+  display: block;
+}
+.dropdown-content {
+  background-color: #333333;
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+  background-color: #000000;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 12px 16px;
+  border-radius: 5px;
+}
+body[data-theme="light"] {
+  background: linear-gradient(to right, rgba(240, 240, 240), rgba(230, 230, 230), rgba(220, 220, 220));
+  color: #000000;
+}
+
+body[data-theme="dim"] {
+  background: linear-gradient(to right, rgba(70, 70, 70), rgba(60, 60, 60), rgba(50, 50, 50));
+  color: #ffffff;
+}
+#search-input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+#search-button {
+  background-color: #1976d2;
+  padding: 8px;
+  font-size: 1.2rem;
+  border: none;
+  border-left: 1px solid #ccc;
+  cursor: pointer;
+  margin-left: -4px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
   </style>
 </head>
-<body>
-  <h1>zk Sync Approval Checker</h1>
+<body data-theme="dark">
+    <div class="theme-dropdown">
+        <button id="theme-toggle">☀️🌙</button>
+        <div class="theme-dropdown-content">
+          <a href="#" id="light-theme">Light</a>
+          <a href="#" id="dim-theme">Dim</a>
+          <a href="#" id="dark-theme">Dark</a>
+        </div>
+    </div>      
+  <h1>zkSync Era Approval Checker</h1>
+  <div id="search-description">
+    <div class="centered-text" class="search-description-text">Review and revoke your token approvals for any dApp. For more information, check out our </span><a class="help-center-link" href="https://help.1inch.io/en/articles/6147312-token-approvals" target="_blank">help center article</a>.</div>
+  <div id="search-container">
+    </p>
+    <input type="text" id="search-input" placeholder="Enter address or ens name" />
+    <button id="search-button">&#128269;</button>
+</div>  
   <div id="controls">
     <button id="connect-wallet">Connect Wallet</button>
     <button id="check-approvals">Get token approvals</button>
-    <!-- Display a connect button and the current account -->
     <button id="enableEthereumButton">Show Address</button>
     <div class="dropdown">
       <button>Helpful Links</button>
       <div class="dropdown-content">
         <a href="https://help.1inch.io/en/articles/6147312-token-approvals" target="_blank">Learn about approvals</a><br>
-        <a href="https://explorer.zksync.io" target="_blank">zkSync explorer</a><br>
-        <a href="https://era.zksync.io/docs/" target="_blank">zkSync info</a>
-      </div>
+        <a href="https://explorer.zksync.io" target="_blank">zkSync Explorer</a><br>
+        <a href="https://era.zksync.io/docs/" target="_blank">zkSync Docs</a><br>
+        <a href="https://portal.zksync.io/bridge" target="_blank">zkSync Bridge</a><br>
+        <a href="https://app.1inch.io/#/324/simple/swap/ETH/USDC" target="_blank">Swap tokens on 1inch</a>
+    </div>    
     </div>
   </div>
   <div id="results"></div>
