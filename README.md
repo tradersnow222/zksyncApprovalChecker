@@ -1,48 +1,27 @@
-# Matt's zkSync Era Approval Checker 
+# zkSync Era Approval Checker
 
-This practice project is a web3 dApp which allows users to connect their Web3 wallet, such as MetaMask, to check and revoke token approvals on the zkSync Era.
+This zkSync Era Approval Checker is a web app that allows users to review and revoke token approvals for any dApp on the zkSync Era network. It provides an easy-to-use interface to connect a wallet, search for wallet addresses or ENS names, and display a table of token allowances and contract approvals.
 
 ## Features
 
-- Connect to MetaMask or other Web3 wallets
-- Check token approvals on zkSync Era 
-- Display connected wallet address
-- Helpful links related to zkSync Era and token approvals
+- Connect to your wallet using MetaMask
+- Search for wallet addresses or ENS names
+- Display a table of token allowances
+- Show contract approvals with associated information
+- Disconnect wallet with a confirmation prompt
+- Theme toggle for dark, light, and dim modes
+- Helpful links for more information on token approvals, zkSync Explorer, zkSync Docs, zkSync Bridge, and swapping tokens on 1inch
 
-## General info
+## Setup
 
-The app.js file contains the main JavaScript logic. It listens for the DOMContentLoaded event, which ensures that the DOM has been loaded before the script executes. 
+1. Clone the repository
+2. Run `npm install` to install the necessary dependencies
+3. Run `npm start` to start the development server
+4. Open your browser and navigate to `http://localhost:8080`
 
-It contains the following functions:
+## Dependencies
 
-- connectWallet: Connects to the user's MetaMask wallet and updates the button text with the connected wallet address. If MetaMask is not installed, it alerts the user to install it.
-- disconnectWallet: Disconnects the wallet and resets the button text to its original state.
-- checkTokenApprovals: This is where the logic for checking token approvals on the zkSync Era should go. It's currently empty.
+- ethers.js: A JavaScript library for interacting with the Ethereum blockchain
+- zksync: The official zkSync JavaScript SDK for interacting with the zkSync network
+- zksync-crypto: A library for zkSync cryptography operations
 
-The index.html file includes the basic structure of the web page, with two main buttons for connecting the wallet and checking token approvals. Additionally, it contains a "Helpful Links" dropdown with links to related resources.
-
-The package.json file lists the dependencies and development dependencies, such as zksync, zksync-crypto, ethers, and browserify. It also contains build and start scripts, which use browserify and live-server, respectively.
-
-
-## Getting Started
-
-1. Clone the repository:
-
-```
-git clone https://github.com/your-username/zksync-era-approval-checker.git
-```
-
-2. Install dependencies:
-
-```
-cd zksync-era-approval-checker
-npm install
-```
-
-3. Start the local development server:
-
-```
-npm start
-```
-
-4. Open your browser and navigate to `http://127.0.0.1:8080` to view the application.
