@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "browserify app.js -o bundle.js",
-    "start": "live-server"
+    "build": "browserify app.js -t [ babelify ] -o bundle.js",
+    "start": "lite-server"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,12 @@
     "zksync-crypto": "^0.9.2"
   },
   "devDependencies": {
-    "browserify": "^17.0.0"
+    "browserify": "^17.0.0",
+    "lite-server": "^2.6.1",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babelify": "^10.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "@babel/runtime": "^7.16.3"
   }
 }
