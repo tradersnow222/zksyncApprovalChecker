@@ -7,7 +7,7 @@ This zkSync Era Approval Checker is a web app that allows users to review and re
 - Connect to your wallet using MetaMask
 - Search for wallet addresses or ENS names
 - Display a table of token allowances
-- Show contract approvals with associated information
+- Select OR select all to revoke allowances
 - Disconnect wallet with a confirmation prompt
 - Theme toggle for dark, light, and dim modes
 - Helpful links for more information on token approvals, zkSync Explorer, zkSync Docs, zkSync Bridge, and swapping tokens on 1inch
