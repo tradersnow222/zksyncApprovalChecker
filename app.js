@@ -1,44 +1,46 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    const connectWalletButton = document.getElementById('connect-wallet');
-    const checkApprovalsButton = document.getElementById('check-approvals');
-  
-    if (!connectWalletButton || !checkApprovalsButton) {cd 
-      console.error('Could not find the required elements on the page.');
-      return;
-    }
-  
-    async function connectWallet() {
-      if (typeof window.ethereum === 'undefined') {
-        alert('MetaMask is not installed!');
-        return;
-      }
-  
-      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-  
-      if (accounts.length > 0) {
-        connectWalletButton.innerText = accounts[0].slice(0, 5) + '...' + accounts[0].slice(-5);
-        connectWalletButton.dataset.connected = 'true';
-      } else {
-        connectWalletButton.innerText = 'Connect Wallet';
-        connectWalletButton.dataset.connected = 'false';
-      }
-    }
-  
-    function disconnectWallet() {
-      connectWalletButton.innerText = 'Connect Wallet';
-      connectWalletButton.dataset.connected = 'false';
-  
-      console.log('Disconnected from wallet');
-    }
-  
-    function showDisconnectPopup() {
-      if (connectWalletButton.dataset.connected === 'true') {
-        const disconnectConfirmation = confirm('Do you want to disconnect your wallet?');
-        if (disconnectConfirmation) {
-          disconnectWallet();
-        }
-      }
-    }
+import {
+  useMetamask,
+  useWalletConnect,
+  useCoinbaseWallet,
+  useNetwork,
+  useAddress,
+  useDisconnect,
+} from '@thirdweb-dev/react';
+
+export const ConnectWallet = () => {
+  const connectWithCoinbaseWallet = useCoinbaseWallet();
+  const connectWithMetamask = useMetamask();
+  const connectWithWalletConnect = useWalletConnect();
+  const disconnectWallet = useDisconnect();
+  const address = useAddress();
+  const network = useNetwork();
+
+  // If a wallet is connected, show address, chainId and disconnect button
+  if (address) {
+    return (
+      <div>
+        Address: {address}
+        <br />
+        Chain ID: {network[0].data.chain && network[0].data.chain.id}
+        <br />
+        <button onClick={disconnectWallet}>Disconnect</button>
+      </div>
+    );
+  }
+
+  // If no wallet is connected, show connect wallet options
+  return (
+    <div>
+      <button onClick={() => connectWithCoinbaseWallet()}>
+        Connect Coinbase Wallet
+      </button>
+      <button onClick={() => connectWithMetamask()}>Connect MetaMask</button>
+      <button onClick={() => connectWithWalletConnect()}>
+        Connect WalletConnect
+      </button>
+    </div>
+  );
+};
   
     document.getElementById('search-button').addEventListener('click', async () => {
       const searchInput = document.getElementById('search-input');
