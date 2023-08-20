@@ -1,10 +1,10 @@
-# zkSync Era Approval Checker (none exist yet to my knowledge)
+# zkSync Era Approval Checker 
 
-This zkSync Era Approval Checker is a web app that allows users to review and revoke token approvals for any dApp on the zkSync Era network. It provides an easy-to-use interface to connect a wallet, search for wallet addresses or ENS names, and display a table of token allowances and contract approvals.
+This is a web app that allows users to review and revoke token approvals for any dApp on the zkSync Era network. It provides an easy-to-use interface to connect a wallet, search for wallet addresses or ENS names, and display a table of token allowances and contract approvals.
 
 ## Features
 
-- Connect to your wallet using MetaMask or WalletConnect
+- Connect the dApp to a variety of wallets
 - Search for wallet addresses or ENS names
 - Display a table of token allowances
 - Select OR select all to revoke allowances
