@@ -22,6 +22,5 @@ This is a web app that allows users to review and revoke token approvals for any
 ## Dependencies
 
 - ethers.js: A JavaScript library for interacting with the Ethereum blockchain
-- zksync: The official zkSync JavaScript SDK for interacting with the zkSync network
-- zksync-crypto: A library for zkSync cryptography operations
+- thirdweb: Connect to user’s wallets, interact with smart contracts, sign messages, and utilize common standards such as tokens, NFTs, marketplaces; all with built-in RPC URLs, IPFS gateways, and more across multiple chains.
 
